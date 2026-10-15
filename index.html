@@ -634,18 +634,33 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
         <div>
           <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-3">Certifications &amp; Workshops</p>
           
-          <div class="bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-zinc-700 shadow-sm">
-            
-            <div>
-              <h4 class="font-bold text-zinc-900 dark:text-white text-sm">AI &amp; Business Transformation</h4>
-              <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Sri Lanka Technology Campus (SLTC)</p>
+          <div class="space-y-3">
+
+            <div class="bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-zinc-700 shadow-sm">
+              <div>
+                <h4 class="font-bold text-zinc-900 dark:text-white text-sm">AI &amp; Business Transformation</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Sri Lanka Technology Campus (SLTC)</p>
+              </div>
+              
+              <button onclick="openModal('Images/AI_Webinar_Certificate.jpg')" class="text-xs font-medium px-4 py-2 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 ml-3
+                bg-zinc-100 text-zinc-800 border-zinc-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900
+                dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black dark:hover:border-white">
+                View ↗
+              </button>
             </div>
-            
-            <button onclick="openModal()" class="text-xs font-medium px-4 py-2 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 ml-3
-              bg-zinc-100 text-zinc-800 border-zinc-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900
-              dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black dark:hover:border-white">
-              View ↗
-            </button>
+
+            <div class="bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 p-4 rounded-2xl flex items-center justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:border-zinc-700 shadow-sm">
+              <div>
+                <h4 class="font-bold text-zinc-900 dark:text-white text-sm">GitGenius - Git & GitHub Workshop Series</h4>
+                <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">IEEE CS Student Branch Chapter of SLTC</p>
+              </div>
+              
+              <button onclick="openModal('Images/GitGenius.jpg')" class="text-xs font-medium px-4 py-2 rounded-xl border transition-all duration-300 cursor-pointer shrink-0 ml-3
+                bg-zinc-100 text-zinc-800 border-zinc-200 hover:bg-zinc-900 hover:text-white hover:border-zinc-900
+                dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700 dark:hover:bg-white dark:hover:text-black dark:hover:border-white">
+                View ↗
+              </button>
+            </div>
 
           </div>
         </div>
@@ -991,15 +1006,18 @@ function app() {
     </button>
 
     <div class="mt-6 flex justify-center">
-      <img src="Images/AI_Webinar_Certificate.jpg" alt="AI Webinar Certificate" class="max-h-[80vh] w-auto rounded-lg object-contain shadow-md">
+      <img id="modalImg" src="" alt="Certificate" class="max-h-[80vh] w-auto rounded-lg object-contain shadow-md">
     </div>
 
   </div>
 </div>
 
 <script>
-  function openModal() {
-    document.getElementById('certModal').classList.remove('hidden');
+  function openModal(imageSrc) {
+    const modal = document.getElementById('certModal');
+    const modalImg = document.getElementById('modalImg');
+    modalImg.src = imageSrc;
+    modal.classList.remove('hidden');
   }
 
   function closeModal() {
@@ -1104,11 +1122,7 @@ function app() {
 </div>
 
 <script>
-  const GROQ_API_KEY = "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"; 
-  const API_URL = "https://api.groq.com/openai/v1/chat/completions";
-
-  // System Instruction
-  const SYSTEM_INSTRUCTION = `You are Supun Priyashanka's AI Portfolio Assistant. Answer questions politely, professionally, and concisely (1-3 sentences max). Supun is a Software Engineering Undergraduate at SLTC, skilled in Python, Java, Web Dev, MySQL, Figma.`;
+  const API_URL = "/api/chat";
 
   let isGenerating = false;
 
@@ -1151,15 +1165,10 @@ function app() {
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${GROQ_API_KEY}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
-            { role: "system", content: SYSTEM_INSTRUCTION },
-            { role: "user", content: userMessage }
-          ]
+          message: userMessage
         })
       });
 
