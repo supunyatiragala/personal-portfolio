@@ -8,7 +8,7 @@
 
 | 🌐 Live Website | 💻 GitHub Repository |
 | :--- | :--- |
-| [Click here to view Portfolio](https://supunyatiragala.vercel.app/) | [View Source Code](https://github.com/supunyatiragala/supunyatiragala.github.io) |
+| [Click here to view Portfolio](https://supunyatiragala.vercel.app/) | [View Source Code](https://github.com/supunyatiragala/personal-portfolio) |
 
 ---
 
@@ -27,4 +27,4 @@
 Open your terminal and run the following command to clone the project to your local machine:
 
 ```bash
-$ git clone [https://github.com/supunyatiragala/supunyatiragala.github.io.git](https://github.com/supunyatiragala/supunyatiragala.github.io.git)
+$ git clone [https://github.com/supunyatiragala/personal-portfolio.git](https://github.com/supunyatiragala/personal-portfolio.git)
