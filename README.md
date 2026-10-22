@@ -8,7 +8,7 @@
 
 | 🌐 Live Website | 💻 GitHub Repository |
 | :--- | :--- |
-| [Click here to view Portfolio](https://supunyatiragala.github.io/) | [View Source Code](https://github.com/supunyatiragala/supunyatiragala.github.io) |
+| [Click here to view Portfolio](https://supunyatiragala.vercel.app/) | [View Source Code](https://github.com/supunyatiragala/supunyatiragala.github.io) |
 
 ---
 
